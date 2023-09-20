@@ -1,15 +1,52 @@
 body {
   background-color: #cbd5e1;
+  margin: 0px;
+}
+
+.site-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0px;
+}
+
+.header {
+  text-align: center;
+  font-size: 3rem;
+  margin: 0px;
+  background-color: #155e75;
+  border-bottom: solid black 2px;
+}
+
+.body-container {
+  display: grid;
+  align-items: top;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: minmax(1fr, 6rem) 1fr;
+}
+
+.player-name {
+  grid-column: 2/3;
+  grid-row: 1/2;
+  display: flex;
+  justify-content: center;
+}
+
+#current-player {
+  text-align: center;
+  font-size: 2.4rem;
 }
 
 .container {
-  padding: 10rem;
+  grid-row: 2/3;
+  grid-column: 2/3;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .button-div {
+  grid-row: 2/3;
   display: flex;
   justify-content: flex-end;
 }
@@ -47,4 +84,5 @@ body {
 
 .game-cell:hover {
   font-size: 5.5rem;
+  background-color: #d8b4fe71;
 }

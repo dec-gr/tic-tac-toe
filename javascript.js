@@ -101,6 +101,8 @@ const gameFlow = (() => {
   player2 = player(prompt("Player 2 Name: "), "O");
 
   let currentPlayer = player1;
+  const currentPlayerDiv = document.getElementById("current-player");
+  currentPlayerDiv.textContent = `Current Player: ${currentPlayer.name}`;
 
   //DisplayBoard
   gameBoard.displayBoard();
@@ -113,14 +115,14 @@ const gameFlow = (() => {
 
   const endGame = (result) => {
     if (result === "Game Over") {
-      alert(`${currentPlayer.name} wins!`);
+      currentPlayerDiv.textContent = `${currentPlayer.name} wins!`;
       gameOver = true;
     } else if (result === "Tie") {
-      alert(`Tie`);
+      currentPlayerDiv.textContent = `Tie`;
     }
   };
 
-  const tempFunction = (e) => {
+  const playTurn = (e) => {
     if (gameOver) {
       alert("Game is already over.");
       return;
@@ -135,6 +137,7 @@ const gameFlow = (() => {
         endGame(result);
       } else {
         currentPlayer = currentPlayer === player1 ? player2 : player1;
+        currentPlayerDiv.textContent = `Current Player: ${currentPlayer.name}`;
       }
     }
   };
@@ -143,7 +146,7 @@ const gameFlow = (() => {
   gameCells.forEach((cell) => {
     cell.addEventListener("click", function () {
       let that = this;
-      tempFunction(that);
+      playTurn(that);
     });
   });
 
